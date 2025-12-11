@@ -1,7 +1,11 @@
 /* Estilos generales */
 body {
-    text-align: justify;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Justificar solo los párrafos dentro de main */
+main p {
+    text-align: justify;
 }
 
 /* Imagen de perfil */
@@ -29,6 +33,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -44,19 +49,25 @@ section h2 {
 .list-group-item {
     margin-bottom: 10px;
     border-radius: 5px;
+    transition: all 0.2s ease-in-out;
 }
 
-/* Badges de idiomas */
-.badge {
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.02);
+}
+
+/* Badges de idiomas - Necesitan ser más específicos */
+.bg-secondary.badge {
     margin-right: 10px;
     font-size: 1rem;
     padding: 0.5em 0.8em;
+    transition: all 0.2s ease-in-out;
 }
 
-.badge:hover {
-    background-color: #f8f9fa;
-    transform: scale(1.1);
-    transition: all 0.2s ease-in-out;
+.bg-secondary.badge:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
 }
 
 h2.text-primary {
@@ -65,20 +76,13 @@ h2.text-primary {
     padding-bottom: 5px;
 }
 
-.list-group-item:hover {
-    background-color: #f8f9fa;
-    transform: scale(1.02);
-    transition: all 0.2s ease-in-out;
-}
-
-/* Efecto hover en enlaces de navegación */
-.nav-link {
+/* Efecto hover en enlaces de navegación - Especificidad correcta */
+.navbar-dark .navbar-nav .nav-link {
     position: relative;
-    color: #fff !important;
     transition: color 0.3s ease;
 }
 
-.nav-link::after {
+.navbar-dark .navbar-nav .nav-link::after {
     content: '';
     position: absolute;
     width: 0%;
@@ -89,10 +93,46 @@ h2.text-primary {
     transition: width 0.3s ease;
 }
 
-.nav-link:hover {
+.navbar-dark .navbar-nav .nav-link:hover {
     color: #ffc107 !important;
 }
 
-.nav-link:hover::after {
+.navbar-dark .navbar-nav .nav-link:hover::after {
     width: 100%;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .profile-img {
+        width: 120px;
+    }
+
+    .img-github {
+        max-width: 120px;
+    }
+
+    h2.text-primary {
+        font-size: 1.5rem;
+    }
+
+    .bg-secondary.badge {
+        display: block;
+        margin-bottom: 10px;
+        width: fit-content;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-img {
+        width: 100px;
+    }
+
+    .img-github {
+        max-width: 100px;
+    }
+
+    main p {
+        text-align: left;
+        /* Mejor legibilidad en móviles */
+    }
 }
