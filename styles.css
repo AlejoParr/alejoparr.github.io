@@ -20,8 +20,8 @@ main p {
 .img-github {
     max-width: 150px;
     height: auto;
-    transition: transform 0.3s ease;
-    animation: slideInUp 0.6s ease-out;
+    transition: transform 0.4s ease;
+    animation: zoomIn 0.6s ease;
 }
 
 .img-github:hover {
@@ -53,11 +53,11 @@ section h2 {
 }
 
 .list-group-item:hover {
-    background-color: #f8f9fa;
+    background-color: #f5dda5 ;
     transform: scale(1.02);
 }
 
-/* Badges de idiomas - Necesitan ser más específicos */
+/* Badges de idiomas*/
 .bg-secondary.badge {
     margin-right: 10px;
     font-size: 1rem;
@@ -71,12 +71,12 @@ section h2 {
 }
 
 h2.text-primary {
-    border-bottom: 3px solid #282a2c;
+    border-bottom: 3px solid #17152c;
     display: inline-block;
     padding-bottom: 5px;
 }
 
-/* Efecto hover en enlaces de navegación - Especificidad correcta */
+/* Efecto hover en enlaces de navegación */
 .navbar-dark .navbar-nav .nav-link {
     position: relative;
     transition: color 0.3s ease;
@@ -101,7 +101,7 @@ h2.text-primary {
     width: 100%;
 }
 
-/* Estilos responsive */
+
 @media (max-width: 768px) {
     .profile-img {
         width: 120px;
@@ -133,6 +133,5 @@ h2.text-primary {
 
     main p {
         text-align: left;
-        /* Mejor legibilidad en móviles */
     }
 }
