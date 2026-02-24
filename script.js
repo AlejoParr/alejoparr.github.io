@@ -185,7 +185,7 @@ function inicializarModoOscuro() {
 // BOTÓN VOLVER ARRIBA
 function inicializarBotonArriba() {
     const boton = document.createElement('button');
-    boton.innerHTML = '⬆️';
+    boton.innerHTML = '⬆';
     boton.setAttribute('aria-label', 'Volver arriba');
     boton.style.cssText = `
         position: fixed;
@@ -195,7 +195,7 @@ function inicializarBotonArriba() {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: #007bff;
+        background-color: #495b6e;
         color: white;
         border: none;
         cursor: pointer;
