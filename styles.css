@@ -94,7 +94,7 @@ section h2 {
 }
 
 .list-group-item:hover {
-    background-color: #f5dda5;
+    background-color: #7e7e7c;
     transform: scale(1.02);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra al hover */
 }
@@ -209,4 +209,115 @@ footer {
     section {
         margin-bottom: 2rem !important;
     }
+}
+
+/* Estilos para los controles de escritura */
+.escritura-controles {
+    border: 1px solid #dee2e6;
+    margin-top: 10px;
+    margin-bottom: 20px !important;
+}
+
+.escritura-controles button {
+    min-width: 100px;
+}
+
+#progresoEscritura {
+    transition: width 0.1s linear;
+    color: white;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+}
+
+#perfil p {
+    border-left: 3px solid transparent;
+    padding-left: 10px;
+    transition: border-color 0.3s;
+}
+
+/* Variables de tema */
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --header-bg: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+}
+
+/* Modo claro */
+.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --header-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+}
+
+/* Aplicar variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header, footer {
+    background-color: var(--header-bg) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s;
+}
+
+header a, footer a {
+    color: var(--text-color) !important;
+}
+
+.light-mode header a, 
+.light-mode footer a {
+    color: var(--primary-color) !important;
+}
+
+.navbar {
+    transition: background-color 0.3s;
+}
+
+.list-group-item {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.badge {
+    transition: background-color 0.3s;
+}
+
+/* Ajustes específicos para modo oscuro */
+:root:not(.light-mode) .list-group-item {
+    border-color: #404040;
+}
+
+:root:not(.light-mode) .card {
+    background-color: #2d2d2d;
+    border-color: #404040;
+}
+
+:root:not(.light-mode) .text-muted {
+    color: #a0a0a0 !important;
+}
+
+:root:not(.light-mode) .bg-primary {
+    background-color: #0056b3 !important;
+}
+
+:root:not(.light-mode) .bg-dark {
+    background-color: #1a1a1a !important;
 }
