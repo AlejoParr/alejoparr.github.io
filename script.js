@@ -72,20 +72,16 @@ function inicializarActiveNavigation() {
     });
 }
 
-// EFECTO DE ESCRITURA - PRIMER PÁRRAFO RÁPIDO, SEGUNDO INICIA AL TERMINAR
+// EFECTO DE ESCRITURA
 function inicializarEfectoEscritura() {
     const parrafos = document.querySelectorAll('#perfil p');
 
     if (parrafos.length >= 2) {
-        // Guardar textos originales
         const textoOriginal1 = parrafos[0].textContent;
         const textoOriginal2 = parrafos[1].textContent;
-
-        // Limpiar párrafos
         parrafos[0].textContent = '';
         parrafos[1].textContent = '';
 
-        // Establecer altura mínima
         parrafos[0].style.minHeight = '120px';
         parrafos[1].style.minHeight = '100px';
 
@@ -149,26 +145,40 @@ function inicializarEfectoEscritura() {
 }
 
 
-
-// MODO OSCURO/CLARO
+// Switch para el modo oscuro.
 function inicializarModoOscuro() {
     const navbar = document.querySelector('.navbar');
     const button = document.createElement('button');
-    button.className = 'btn btn-sm btn-outline-light ms-2';
-    button.innerHTML = '🌓';
+    button.className = 'btn btn-sm btn-outline-light ms-2 theme-toggle-minimal';
+    button.innerHTML = '<span class="barra"></span><span class="circulo"></span>';
     button.setAttribute('aria-label', 'Cambiar modo oscuro/claro');
 
     navbar.querySelector('.navbar-nav').appendChild(button);
 
+    const temaGuardado = localStorage.getItem('tema') || 'oscuro';
+    if (temaGuardado === 'claro') {
+        document.body.classList.add('light-mode');
+        button.classList.add('activo');
+        button.classList.remove('btn-outline-light');
+        button.classList.add('btn-outline-dark');
+    }
+
     button.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        if (document.body.classList.contains('light-mode')) {
-            document.body.style.backgroundColor = '#f8f9fa';
-            document.body.style.color = '#212529';
-        } else {
-            document.body.style.backgroundColor = '';
-            document.body.style.color = '';
-        }
+        button.classList.toggle('activo');
+
+        setTimeout(() => {
+            document.body.classList.toggle('light-mode');
+
+            if (document.body.classList.contains('light-mode')) {
+                button.classList.remove('btn-outline-light');
+                button.classList.add('btn-outline-dark');
+                localStorage.setItem('tema', 'claro');
+            } else {
+                button.classList.remove('btn-outline-dark');
+                button.classList.add('btn-outline-light');
+                localStorage.setItem('tema', 'oscuro');
+            }
+        }, 200);
     });
 }
 
@@ -212,7 +222,7 @@ function inicializarBotonArriba() {
 }
 
 
-// 12. ANIMACIONES AL HACER SCROLL
+// ANIMACIONES AL HACER SCROLL
 function inicializarAnimacionesScroll() {
     const elementos = document.querySelectorAll('section, .list-group-item');
 

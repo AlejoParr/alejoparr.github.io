@@ -321,3 +321,83 @@ header a, footer a {
 :root:not(.light-mode) .bg-dark {
     background-color: #1a1a1a !important;
 }
+
+/* Estilos parra la barra deslizante */
+
+.theme-toggle-minimal {
+    width: 50px;
+    height: 30px;
+    padding: 0;
+    position: relative;
+    border-color: #808080 !important; /* Borde gris */
+    color: #808080 !important; /* Color del texto/icono gris */
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-minimal .barra {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #808080; /* Gris */
+    border-radius: 2px;
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle-minimal .circulo {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #808080;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    transition: left 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+.theme-toggle-minimal:hover {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+.theme-toggle-minimal:hover .barra {
+    background-color: #ffffff;
+}
+
+.theme-toggle-minimal:hover .circulo {
+    border-color: #ffffff;
+}
+
+/* Estado activo (círculo a la derecha) */
+.theme-toggle-minimal.activo .circulo {
+    left: 26px;
+}
+
+/* Estilo para modo claro (cuando está en light-mode) */
+.light-mode .theme-toggle-minimal {
+    border-color: #808080 !important;
+    color: #808080 !important;
+}
+
+.light-mode .theme-toggle-minimal:hover {
+    border-color: #000000 !important;
+    color: #000000 !important;
+}
+
+.light-mode .theme-toggle-minimal:hover .barra {
+    background-color: #000000 !important;
+}
+
+.light-mode .theme-toggle-minimal:hover .circulo {
+    border-color: #000000 !important;
+}
+
+/* Transición */
+.theme-toggle-minimal,
+.theme-toggle-minimal .barra,
+.theme-toggle-minimal .circulo {
+    transition: all 0.3s ease;
+}
