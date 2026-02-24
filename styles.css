@@ -1,10 +1,10 @@
 /* Estilos generales */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    scroll-behavior: smooth; /* Navegación suave */
+    scroll-behavior: smooth;
 }
 
-/* Enlace para saltar al contenido (accesibilidad) */
+/* Enlace para saltar al contenido */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -90,13 +90,13 @@ section h2 {
     margin-bottom: 10px;
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.125); /* Borde sutil */
+    border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .list-group-item:hover {
-    background-color: #7e7e7c;
+    background-color: #8f785b59;
     transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra al hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Badges de idiomas */
@@ -275,7 +275,7 @@ header a, footer a {
     color: var(--text-color) !important;
 }
 
-.light-mode header a, 
+.light-mode header a,
 .light-mode footer a {
     color: var(--primary-color) !important;
 }
