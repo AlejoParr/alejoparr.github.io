@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
     // ACTUALIZACIÓN AUTOMÁTICA DEL AÑO
     actualizarAnio();
@@ -9,12 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // DESTACAR SECCIÓN ACTIVA EN NAVEGACIÓN
     inicializarActiveNavigation();
 
-    // EFECTO DE ESCRITURA PARA EL PERFIL
-    inicializarEfectoEscritura();
-
     // MODO OSCURO/CLARO
     inicializarModoOscuro();
-    ;
 
     // BOTÓN PARA VOLVER ARRIBA
     inicializarBotonArriba();
@@ -32,7 +27,7 @@ function actualizarAnio() {
     }
 }
 
-//  NAVEGACIÓN SUAVE
+// NAVEGACIÓN SUAVE
 function inicializarSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -48,7 +43,7 @@ function inicializarSmoothScroll() {
     });
 }
 
-//  DESTACAR SECCIÓN ACTIVA
+// DESTACAR SECCIÓN ACTIVA
 function inicializarActiveNavigation() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -57,7 +52,6 @@ function inicializarActiveNavigation() {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
             if (scrollY >= (sectionTop - 200)) {
                 current = section.getAttribute('id');
             }
@@ -71,79 +65,6 @@ function inicializarActiveNavigation() {
         });
     });
 }
-
-// EFECTO DE ESCRITURA
-function inicializarEfectoEscritura() {
-    const parrafos = document.querySelectorAll('#perfil p');
-
-    if (parrafos.length >= 2) {
-        const textoOriginal1 = parrafos[0].textContent;
-        const textoOriginal2 = parrafos[1].textContent;
-        parrafos[0].textContent = '';
-        parrafos[1].textContent = '';
-
-        parrafos[0].style.minHeight = '120px';
-        parrafos[1].style.minHeight = '100px';
-
-        // Añadir indicador visual de que está escribiendo
-        parrafos[0].classList.add('escribiendo');
-
-        let i = 0;
-        let j = 0;
-        let primerCompletado = false;
-        const velocidad = 14;
-
-        function escribirPrimerParrafo() {
-            if (i < textoOriginal1.length) {
-                let caracteresPorVez = 3;
-                let fragmento = textoOriginal1.substr(i, caracteresPorVez);
-                parrafos[0].textContent += fragmento;
-                i += caracteresPorVez;
-
-                parrafos[0].classList.add('escribiendo');
-
-                setTimeout(escribirPrimerParrafo, velocidad);
-            } else {
-                // Asegurar que el texto completo esté escrito
-                parrafos[0].textContent = textoOriginal1;
-                parrafos[0].classList.remove('escribiendo');
-                parrafos[0].classList.add('completado');
-
-                // Iniciar segundo párrafo
-                primerCompletado = true;
-                parrafos[1].classList.add('escribiendo');
-                escribirSegundoParrafo();
-            }
-        }
-
-        function escribirSegundoParrafo() {
-            if (j < textoOriginal2.length) {
-                let caracteresPorVez = 3;
-                let fragmento = textoOriginal2.substr(j, caracteresPorVez);
-                parrafos[1].textContent += fragmento;
-                j += caracteresPorVez;
-
-                setTimeout(escribirSegundoParrafo, velocidad);
-            } else {
-                parrafos[1].textContent = textoOriginal2;
-                parrafos[1].classList.remove('escribiendo');
-                parrafos[1].classList.add('completado');
-            }
-        }
-
-        // Activar efecto cuando la sección sea visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && i === 0 && j === 0) {
-                    escribirPrimerParrafo();
-                }
-            });
-        }, { threshold: 0.3 });
-
-        observer.observe(document.querySelector('#perfil'));
-    }
-}
-
 
 // Switch para el modo oscuro.
 function inicializarModoOscuro() {
@@ -185,7 +106,7 @@ function inicializarModoOscuro() {
 // BOTÓN VOLVER ARRIBA
 function inicializarBotonArriba() {
     const boton = document.createElement('button');
-    boton.innerHTML = '⬆';
+    boton.innerHTML = '<i class="fas fa-arrow-up"></i>'; // Icono FontAwesome en lugar de texto
     boton.setAttribute('aria-label', 'Volver arriba');
     boton.style.cssText = `
         position: fixed;
@@ -195,12 +116,14 @@ function inicializarBotonArriba() {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: #495b6e;
+        background-color: #3a86ff;
         color: white;
         border: none;
         cursor: pointer;
-        font-size: 24px;
+        font-size: 20px;
         z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        transition: transform 0.2s;
     `;
 
     document.body.appendChild(boton);
@@ -221,15 +144,14 @@ function inicializarBotonArriba() {
     });
 }
 
-
 // ANIMACIONES AL HACER SCROLL
 function inicializarAnimacionesScroll() {
-    const elementos = document.querySelectorAll('section, .list-group-item');
+    const elementos = document.querySelectorAll('section, .list-group-item, .card');
 
     elementos.forEach(elemento => {
         elemento.style.opacity = '0';
         elemento.style.transform = 'translateY(20px)';
-        elemento.style.transition = 'opacity 0.5s, transform 0.5s';
+        elemento.style.transition = 'opacity 0.6s, transform 0.6s';
     });
 
     const observer = new IntersectionObserver((entries) => {

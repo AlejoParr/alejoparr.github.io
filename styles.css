@@ -1,7 +1,18 @@
+/* Importar fuentes modernas */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
+
 /* Estilos generales */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', sans-serif; /* Fuente moderna para cuerpo */
     scroll-behavior: smooth;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif; /* Fuente moderna para títulos */
+    font-weight: 700;
 }
 
 /* Enlace para saltar al contenido */
@@ -23,88 +34,75 @@ body {
 /* Justificar solo los párrafos dentro de main */
 main p {
     text-align: justify;
-    line-height: 1.6; /* Mejor legibilidad */
+    line-height: 1.7; /* Mejor legibilidad */
 }
 
 /* Imagen de perfil */
 .profile-img {
     width: 150px;
-    height: 150px; /* Fijar altura para mantener proporción */
-    object-fit: cover; /* Asegurar que la imagen se ajuste bien */
-    border: 3px solid #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos para el logo de Github */
 .img-github {
     max-width: 150px;
     height: auto;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, filter 0.3s;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
 }
 
 .img-github:hover {
-    transform: scale(1.2);
+    transform: scale(1.1) rotate(3deg);
 }
 
 /* Animación zoomIn (para la imagen de GitHub) */
 @keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Aplicar animación a la imagen de GitHub */
 .img-github {
     animation: zoomIn 0.6s ease;
 }
 
-/* Animación slideInUp para secciones */
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Aplicar animación a las secciones */
+/* Estilos de secciones */
 section {
     animation: slideInUp 0.6s ease;
 }
 
 section h2 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
-/* Experiencia laboral */
+h2.text-primary {
+    border-bottom: 3px solid #3a86ff;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+}
+
+/* Experiencia laboral (Tarjetas modernas) */
 .list-group-item {
-    margin-bottom: 10px;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px !important;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .list-group-item:hover {
-    background-color: #8f785b59;
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 /* Badges de idiomas */
 .badge {
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 8px 15px;
-    width: fit-content;
     background-color: #3a86ff;
     color: white;
     border-radius: 15px;
@@ -115,20 +113,17 @@ section h2 {
 }
 
 .badge:hover {
-    opacity: 0.9;
-    transform: scale(1.09);
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    background-color: #2a75e0;
+    transform: scale(1.05);
 }
 
-/* Títulos principales */
-h2.text-primary {
-    border-bottom: 3px solid #17152c;
-    display: inline-block;
-    padding-bottom: 5px;
-    margin-bottom: 1.5rem;
+/* Navbar con efecto cristal */
+.navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Efecto hover en enlaces de navegación */
 .navbar-dark .navbar-nav .nav-link {
     position: relative;
     transition: color 0.3s ease;
@@ -154,111 +149,29 @@ h2.text-primary {
     width: 100%;
 }
 
-/* Mejoras para listas */
-ul.list-group {
-    border: none;
-}
-
-.list-group-item {
-    border-left: none;
-    border-right: none;
-}
-
-/* Estilos para el footer */
-footer {
-    margin-top: 3rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .profile-img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .img-github {
-        max-width: 120px;
-    }
-
-    h2.text-primary {
-        font-size: 1.5rem;
-    }
-
-    .badge {
-        display: block;
-        margin-bottom: 10px;
-        width: fit-content;
-    }
-}
-
-@media (max-width: 576px) {
-    .profile-img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .img-github {
-        max-width: 100px;
-    }
-
-    main p {
-        text-align: left;
-        font-size: 0.95rem; /* Mejor legibilidad en móviles */
-    }
-
-    section {
-        margin-bottom: 2rem !important;
-    }
-}
-
-/* Estilos para los controles de escritura */
-.escritura-controles {
-    border: 1px solid #dee2e6;
-    margin-top: 10px;
-    margin-bottom: 20px !important;
-}
-
-.escritura-controles button {
-    min-width: 100px;
-}
-
-#progresoEscritura {
-    transition: width 0.1s linear;
-    color: white;
-    font-size: 10px;
-    line-height: 10px;
-    text-align: center;
-}
-
-#perfil p {
-    border-left: 3px solid transparent;
-    padding-left: 10px;
-    transition: border-color 0.3s;
-}
-
 /* Variables de tema */
 :root {
     --bg-color: #1a1a1a;
-    --text-color: #e0e0e0;
+    --text-color: #e0e0e0; /* Texto principal claro */
     --header-bg: #2d2d2d;
     --card-bg: #2d2d2d;
     --border-color: #404040;
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
+    --primary-color: #3a86ff; /* Azul más brillante y moderno */
+    --secondary-color: #a0a0a0; /* Gris claro para textos secundarios */
 }
 
 /* Modo claro */
 .light-mode {
-    --bg-color: #ffffff;
-    --text-color: #212529;
-    --header-bg: #f8f9fa;
+    --bg-color: #f8f9fa;
+    --text-color: #212529; /* Texto principal oscuro */
+    --header-bg: #ffffff;
     --card-bg: #ffffff;
     --border-color: #dee2e6;
     --primary-color: #007bff;
-    --secondary-color: #6c757d;
+    --secondary-color: #6c757d; /* Gris oscuro para textos secundarios */
 }
 
-/* Aplicar variables */
+/* Aplicar variables globalmente al body */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -275,62 +188,220 @@ header a, footer a {
     color: var(--text-color) !important;
 }
 
+/* FORZAR CONTRASTE EN MODO OSCURO (La clave de tu pedido) */
+:root:not(.light-mode) {
+    /* Texto general */
+    color-scheme: dark; /* Ayuda a navegadores a renderizar mejor inputs y scrollbars */
+}
+
+:root:not(.light-mode) body {
+    color: var(--text-color);
+}
+
+/* Textos secundarios y de ayuda */
+:root:not(.light-mode) .text-muted {
+    color: var(--secondary-color) !important;
+}
+
+/* Párrafos y listas dentro de las tarjetas */
+:root:not(.light-mode) .list-group-item,
+:root:not(.light-mode) .card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+:root:not(.light-mode) .list-group-item p,
+:root:not(.light-mode) .card p {
+    color: var(--text-color); /* Asegura que las descripciones sean legibles */
+}
+
+/* Títulos dentro de las tarjetas */
+:root:not(.light-mode) .list-group-item h3,
+:root:not(.light-mode) .card h5 {
+    color: #ffffff; /* Blanco puro para títulos en tarjetas oscuras */
+}
+
+/* Badges de idiomas */
+:root:not(.light-mode) .badge {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Navbar en modo oscuro */
+:root:not(.light-mode) .navbar {
+    background-color: rgba(26, 26, 26, 0.95) !important;
+}
+
+:root:not(.light-mode) .navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+:root:not(.light-mode) .navbar .nav-link:hover,
+:root:not(.light-mode) .navbar .nav-link.active {
+    color: #ffc107 !important; /* Color de acento al pasar el mouse */
+}
+
+/* Botón flotante "volver arriba" */
+:root:not(.light-mode) #myBtn { /* Asegúrate de que el botón tenga este ID o clase en el JS */
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* =========================================
+   VARIABLES Y TEMAS (OSCURO / CLARO)
+   ========================================= */
+
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0; 
+    --secondary-text: #a0a0a0; 
+    --header-bg: #2d2d2d;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+    --primary-color: #3a86ff;
+}
+
+/* MODO CLARO (Estado por defecto) */
+.light-mode {
+    --bg-color: #f8f9fa;
+    --text-color: #212529; 
+    --secondary-text: #6c757d; 
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --primary-color: #007bff;
+}
+
+/* Aplicar variables al body */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header, footer {
+    background-color: var(--header-bg) !important;
+    color: var(--text-color) !important;
+    transition: background-color 0.3s;
+}
+
+header a, footer a {
+    color: var(--text-color) !important;
+}
+
+/* Estilos para enlaces y textos secundarios en modo claro */
 .light-mode header a,
 .light-mode footer a {
     color: var(--primary-color) !important;
 }
 
-.navbar {
-    transition: background-color 0.3s;
+.light-mode .text-muted {
+    color: #6c757d !important;
 }
 
-.list-group-item {
-    background-color: var(--card-bg);
+/* =========================================
+   REGLAS EXCLUSIVAS PARA MODO OSCURO
+   ========================================= */
+
+:root:not(.light-mode) {
+    color-scheme: dark;
+}
+
+:root:not(.light-mode) body {
+    background-color: var(--bg-color);
     color: var(--text-color);
-    border-color: var(--border-color);
 }
 
-.card {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    border-color: var(--border-color);
+/* Títulos y encabezados en modo oscuro */
+:root:not(.light-mode) h1, 
+:root:not(.light-mode) h2, 
+:root:not(.light-mode) h3, 
+:root:not(.light-mode) h4, 
+:root:not(.light-mode) h5, 
+:root:not(.light-mode) h6 {
+    color: #ffffff; 
 }
 
-.badge {
-    transition: background-color 0.3s;
+/* CORRECCIÓN: Forzar color oscuro de títulos en MODO CLARO */
+.light-mode h1, 
+.light-mode h2, 
+.light-mode h3, 
+.light-mode h4, 
+.light-mode h5, 
+.light-mode h6 {
+    color: #212529 !important; /* Negro/Gris oscuro legible */
 }
 
-/* Ajustes específicos para modo oscuro */
-:root:not(.light-mode) .list-group-item {
-    border-color: #404040;
+/* Textos secundarios (grises) en modo oscuro */
+:root:not(.light-mode) .text-muted,
+:root:not(.light-mode) small {
+    color: var(--secondary-text) !important; 
 }
 
+/* Párrafos y tarjetas en modo oscuro */
+:root:not(.light-mode) .list-group-item,
 :root:not(.light-mode) .card {
-    background-color: #2d2d2d;
-    border-color: #404040;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
 }
 
-:root:not(.light-mode) .text-muted {
-    color: #a0a0a0 !important;
+:root:not(.light-mode) .list-group-item p,
+:root:not(.light-mode) .card p {
+    color: var(--text-color);
 }
 
-:root:not(.light-mode) .bg-primary {
-    background-color: #0056b3 !important;
+/* CORRECCIÓN: Asegurar que los párrafos de las tarjetas sean oscuros en modo claro */
+.light-mode .list-group-item p,
+.light-mode .card p {
+    color: #212529 !important;
 }
 
-:root:not(.light-mode) .bg-dark {
-    background-color: #1a1a1a !important;
+/* Badges y barras de progreso en modo oscuro */
+:root:not(.light-mode) .badge {
+    background-color: var(--primary-color);
+    color: #ffffff;
 }
 
-/* Estilos parra la barra deslizante */
+:root:not(.light-mode) .progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* Navbar en modo oscuro */
+:root:not(.light-mode) .navbar {
+    background-color: rgba(26, 26, 26, 0.95) !important;
+}
+
+:root:not(.light-mode) .navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+:root:not(.light-mode) .navbar .nav-link:hover,
+:root:not(.light-mode) .navbar .nav-link.active {
+    color: #ffc107 !important;
+}
+
+/* Enlaces dentro del contenido en modo oscuro */
+:root:not(.light-mode) a {
+    color: #ffffff;
+}
+
+:root:not(.light-mode) a:hover {
+    color: #ffc107;
+}
+
+/* =========================================
+   ESTILOS DEL SWITCH (MODO OSCURO/CLARO)
+   ========================================= */
 
 .theme-toggle-minimal {
     width: 50px;
     height: 30px;
     padding: 0;
     position: relative;
-    border-color: #808080 !important; /* Borde gris */
-    color: #808080 !important; /* Color del texto/icono gris */
+    border: 1px solid #808080 !important;
+    color: #808080 !important;
     transition: all 0.3s ease;
 }
 
@@ -338,7 +409,7 @@ header a, footer a {
     display: block;
     width: 30px;
     height: 4px;
-    background-color: #808080; /* Gris */
+    background-color: #808080;
     border-radius: 2px;
     position: absolute;
     top: 13px;
@@ -371,15 +442,14 @@ header a, footer a {
     border-color: #ffffff;
 }
 
-/* Estado activo (círculo a la derecha) */
 .theme-toggle-minimal.activo .circulo {
     left: 26px;
 }
 
-/* Estilo para modo claro (cuando está en light-mode) */
+/* Estilo del switch en modo claro */
 .light-mode .theme-toggle-minimal {
-    border-color: #808080 !important;
-    color: #808080 !important;
+    border-color: #6c757d !important;
+    color: #6c757d !important;
 }
 
 .light-mode .theme-toggle-minimal:hover {
@@ -393,11 +463,4 @@ header a, footer a {
 
 .light-mode .theme-toggle-minimal:hover .circulo {
     border-color: #000000 !important;
-}
-
-/* Transición */
-.theme-toggle-minimal,
-.theme-toggle-minimal .barra,
-.theme-toggle-minimal .circulo {
-    transition: all 0.3s ease;
 }
