@@ -1,26 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ACTUALIZACIÓN AUTOMÁTICA DEL AÑO
     actualizarAnio();
 
-    // NAVEGACIÓN SUAVE (SMOOTH SCROLL)
     inicializarSmoothScroll();
 
-    // DESTACAR SECCIÓN ACTIVA EN NAVEGACIÓN
     inicializarActiveNavigation();
 
-    // MODO OSCURO/CLARO
     inicializarModoOscuro();
 
-    // BOTÓN PARA VOLVER ARRIBA
     inicializarBotonArriba();
 
-    // ANIMACIÓN AL HACER SCROLL
     inicializarAnimacionesScroll();
 });
 
 // ACTUALIZACIÓN AUTOMÁTICA DEL AÑO
 function actualizarAnio() {
-    const footer = document.querySelector('footer p');
+    const footer = document.getElementById('bottom');
     if (footer) {
         const anioActual = new Date().getFullYear();
         footer.innerHTML = `© ${anioActual} Alejandro Parra`;
