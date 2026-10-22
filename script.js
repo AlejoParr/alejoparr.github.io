@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    actualizarAnio();
 
     inicializarSmoothScroll();
 
@@ -11,15 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     inicializarAnimacionesScroll();
 });
-
-// ACTUALIZACIÓN AUTOMÁTICA DEL AÑO
-function actualizarAnio() {
-    const footer = document.getElementById('bottom');
-    if (footer) {
-        const anioActual = new Date().getFullYear();
-        footer.innerHTML = `© ${anioActual} Alejandro Parra`;
-    }
-}
 
 // NAVEGACIÓN SUAVE
 function inicializarSmoothScroll() {
