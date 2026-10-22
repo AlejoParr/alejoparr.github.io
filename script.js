@@ -69,6 +69,8 @@ function inicializarActiveNavigation() {
 // Switch para el modo oscuro.
 function inicializarModoOscuro() {
     const navbar = document.querySelector('.navbar');
+    const gitLogo = document.getElementById('GitLogo');
+
     const button = document.createElement('button');
     button.className = 'btn btn-sm btn-outline-light ms-2 theme-toggle-minimal';
     button.innerHTML = '<span class="barra"></span><span class="circulo"></span>';
@@ -77,11 +79,20 @@ function inicializarModoOscuro() {
     navbar.querySelector('.navbar-nav').appendChild(button);
 
     const temaGuardado = localStorage.getItem('tema') || 'oscuro';
+
     if (temaGuardado === 'claro') {
         document.body.classList.add('light-mode');
         button.classList.add('activo');
         button.classList.remove('btn-outline-light');
         button.classList.add('btn-outline-dark');
+
+        if (gitLogo) {
+            gitLogo.style.filter = 'invert(0)';
+        }
+    } else {
+        if (gitLogo) {
+            gitLogo.style.filter = 'invert(1)';
+        }
     }
 
     button.addEventListener('click', () => {
@@ -91,17 +102,31 @@ function inicializarModoOscuro() {
             document.body.classList.toggle('light-mode');
 
             if (document.body.classList.contains('light-mode')) {
+
                 button.classList.remove('btn-outline-light');
                 button.classList.add('btn-outline-dark');
+
+                if (gitLogo) {
+                    gitLogo.style.filter = 'invert(0)';
+                }
+
                 localStorage.setItem('tema', 'claro');
+
             } else {
+
                 button.classList.remove('btn-outline-dark');
                 button.classList.add('btn-outline-light');
+
+                if (gitLogo) {
+                    gitLogo.style.filter = 'invert(1)';
+                }
+
                 localStorage.setItem('tema', 'oscuro');
             }
         }, 200);
     });
 }
+
 
 // BOTÓN VOLVER ARRIBA
 function inicializarBotonArriba() {
